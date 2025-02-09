@@ -1,5 +1,6 @@
 #Test file for task2
 import runpy
+import pytest
 
 def test_task2_output(capsys):
     """
@@ -8,7 +9,7 @@ def test_task2_output(capsys):
     #Runs the script 
     runpy.run_path("task2.py")
     
-    #Capture the output printed to stdout
+    #Capture the output 
     captured = capsys.readouterr().out.strip().splitlines()
     
     #The expected output
