@@ -1,0 +1,35 @@
+{% extends 'booking/base.html' %}
+
+{% block title %}Seat Booking{% endblock %}
+
+{% block content %}
+  <h2>Select a Movie to Book a Seat</h2>
+  <form method="GET" action="{% url 'seat_booking' %}" class="form-inline my-3">
+    <div class="form-group mr-2">
+      <label for="movieSelect" class="mr-2">Movie:</label>
+      <select name="movie_id" id="movieSelect" class="form-control">
+        {% for movie in movies %}
+          <option value="{{ movie.id }}">{{ movie.title }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">View Seats</button>
+  </form>
+
+  {% if seats %}
+    <h3>Available Seats</h3>
+    <ul class="list-group">
+      {% for seat in seats %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Seat: {{ seat.seat_number }}
+          {% if not seat.is_booked %}
+            <a href="{% url 'book_seat' seat.id %}" class="btn btn-success btn-sm">Book</a>
+          {% else %}
+            <span class="badge badge-secondary">Booked</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
+
