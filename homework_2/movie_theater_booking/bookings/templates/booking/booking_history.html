@@ -1,0 +1,17 @@
+{% extends 'booking/base.html' %}
+
+{% block title %}My Bookings{% endblock %}
+
+{% block content %}
+  <h2>Your Booking History</h2>
+  <ul class="list-group">
+    {% for booking in bookings %}
+      <li class="list-group-item">
+        <h5>{{ booking.movie.title }}</h5>
+        <p>Seat: {{ booking.seat.seat_number }} | Booked on: {{ booking.booking_date|date:"F j, Y, g:i a" }}</p>
+      </li>
+    {% empty %}
+      <li class="list-group-item">You have not booked any seats yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

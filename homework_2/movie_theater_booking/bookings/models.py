@@ -10,23 +10,23 @@ class Movie(models.Model):
     release_date = models.DateField()
     duration = models.DurationField()
 
-def __str__(self):
-    return self.title
+    def __str__(self):
+        return self.title
 
 #Seat Model
 class Seat(models.Model):
     seat_number = models.CharField(max_length=5)
     booking_status = models.BooleanField(default= False)
 
-def __str__(self):
-    return self.seat_number
+    def __str__(self):
+        return self.seat_number
 
 #Booking Model
 class Booking(models.Model):
     movie = models.ForeignKey(Movie, on_delete= models.CASCADE)
     seat = models.ForeignKey(Seat, on_delete= models.CASCADE)
-    user = models.ForeignKey(User, on_delete= models.CASCADE)
+    user = models.ForeignKey(User, on_delete= models.CASCADE, null = True, blank = True)
     booking_date = models.DateTimeField(auto_now_add=True)
 
-def __str__(self):
-    return f"{self.user.username} - {self.movie.title} - {self.seat.seat_number}"
+    def __str__(self):
+        return f"{self.user.username} - {self.movie.title} - {self.seat.seat_number}"

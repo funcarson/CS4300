@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-j1)r&-(e4v!32=1x0e!=8zbc$%a@0*ozisof@yp)3856q6^#$f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'app-carsoncontainer-5.devedu.io',
+    'editor-carsoncontainer-5.devedu.io',  # Add this domain
+    'localhost',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -36,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'rest_framework',
     'bookings',
     'django.contrib.staticfiles',
 ]

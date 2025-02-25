@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Movie Theater Booking{% endblock %}</title>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  >
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Movie Booking</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'movie_list' %}">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'seat_booking' %}">Book a Seat</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'booking_history' %}">My Bookings</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+</html>
